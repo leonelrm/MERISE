@@ -1,4 +1,4 @@
-#suppression de la base si elle existe
+#suppression de in base si elle existe
 drop database if exists dbgestion;
 
 #création de la base de données dbgestion
@@ -110,6 +110,22 @@ insert into commander (qtecde, id_produitCmd, id_factureCmd) values
 (15,14,8),
 (1,9,8);
 
+#ajouter  une colonne dans une table
+
+ALTER TABLE client
+ADD codePostal CHAR(5);
+
+ALTER TABLE facture
+DROP FOREIGN KEY id_client;
+
+update table
+set colonne=nouvelle valeur
+where condition
 
 
+#select 2 ville IN
+SELECT * FROM client WHERE ville IN ("ville", "ville");
 
+#like
+
+SELECT * FROM table WHERE colonne "%l"
