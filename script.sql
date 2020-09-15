@@ -129,3 +129,16 @@ SELECT * FROM client WHERE ville IN ("ville", "ville");
 #like
 
 SELECT * FROM table WHERE colonne "%l"
+
+#between
+SELECT * FROM table
+WHERE colonne BETWEEN valeur AND valeur2;
+
+#AVG() = moyenne
+#count() =compte les lignes
+
+#alias
+SELECT  count(DISTINCT ville) "nombre de ville" FROM client;
+
+#group by
+SELECT c.nom, c.prenom, count(f.facture_number) FROM client c, facture f WHERE c.id_client= f.id_client group BY c.id_client 
