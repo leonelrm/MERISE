@@ -1,0 +1,8 @@
+type_monument:id_type_monument, libelle
+ETRE,1N monument, _11 type_monument
+monument:id_monument,nom,arrondissement,adresse, site_web
+DESSERVIR, 1N monument, 1N station
+station:id_station,nom_station
+AVOIR, 1N station, 1N ligne_metro
+ligne_metro:id_ligne,numero_ligne, nom_ligne
+

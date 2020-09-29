@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta charset='utf-8'>
+<style>
+  #mld .relation { font-variant: small-caps; font-weight: bold }
+  #mld .primary { text-decoration: underline }
+  #mld .foreign { font-style: oblique }
+  #mld .normal { }
+</style>
+</head>
+<body>
+<div id='mld'>
+<div>
+  <span class='relation'>type_monument</span> (
+    <span class='foreign primary'>id_monument</span>,
+    <span class='primary'>id_type_monument</span>,
+    <span class='normal'>libelle</span>
+  )
+</div>
+<div>
+  <span class='relation'>monument</span> (
+    <span class='primary'>id_monument</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>arrondissement</span>,
+    <span class='normal'>adresse</span>,
+    <span class='normal'>site_web</span>
+  )
+</div>
+<div>
+  <span class='relation'>DESSERVIR</span> (
+    <span class='foreign primary'>id_monument</span>,
+    <span class='foreign primary'>id_station</span>
+  )
+</div>
+<div>
+  <span class='relation'>station</span> (
+    <span class='primary'>id_station</span>,
+    <span class='normal'>nom_station</span>
+  )
+</div>
+<div>
+  <span class='relation'>AVOIR</span> (
+    <span class='foreign primary'>id_station</span>,
+    <span class='foreign primary'>id_ligne</span>
+  )
+</div>
+<div>
+  <span class='relation'>ligne_metro</span> (
+    <span class='primary'>id_ligne</span>,
+    <span class='normal'>numero_ligne</span>,
+    <span class='normal'>nom_ligne</span>
+  )
+</div>
+</div>
+</body>
+</html>

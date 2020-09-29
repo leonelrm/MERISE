@@ -1,0 +1,110 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="812" height="136" view_box="0 0 812 136"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:link="http://www.w3.org/1999/xlink">\n\n<desc>Généré par Mocodo 2.3.7 le Tue, 29 Sep 2020 02:36:47</desc>
+
+<rect id="frame" x="0" y="0" width="812" height="136" fill="#ffffbf" stroke="none" stroke-width="0"/>
+
+<!-- Association ETRE -->
+<line x1="302" y1="68" x2="194" y2="68" stroke="#74add1" stroke-width="2"/>
+<text x="222" y="85.0" fill="#d73027" font-family="Verdana" font-size="12">1,N</text>
+<line x1="74" y1="68" x2="194" y2="68" stroke="#74add1" stroke-width="2"/>
+<text x="144" y="85.0" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<line x1="144" y1="87.0" x2="165" y2="87.0" stroke="#d73027" stroke-width="1"/>
+<g id="association-ETRE">
+	<path d="M 203 43 a 14 14 90 0 1 14 14 V 68 h -46 V 57 a 14 14 90 0 1 14 -14" fill="#abd9e9" stroke="#abd9e9" stroke-width="0"/>
+	<path d="M 217 68.0 v 11 a 14 14 90 0 1 -14 14 H 185 a 14 14 90 0 1 -14 -14 V 68.0 H 46" fill="#e0f3f8" stroke="#e0f3f8" stroke-width="0"/>
+	<rect x="171" y="43" width="46" height="50" fill="none" rx="14" stroke="#74add1" stroke-width="2"/>
+	<line x1="171" y1="68" x2="217" y2="68" stroke="#74add1" stroke-width="1"/>
+	<text x="178" y="60.7" fill="#000000" font-family="Verdana" font-size="12">ETRE</text>
+</g>
+
+<!-- Association AVOIR -->
+<line x1="548" y1="68" x2="650" y2="68" stroke="#74add1" stroke-width="2"/>
+<text x="596" y="85.0" fill="#d73027" font-family="Verdana" font-size="12">1,N</text>
+<line x1="756" y1="68" x2="650" y2="68" stroke="#74add1" stroke-width="2"/>
+<text x="682" y="85.0" fill="#d73027" font-family="Verdana" font-size="12">1,N</text>
+<g id="association-AVOIR">
+	<path d="M 663 43 a 14 14 90 0 1 14 14 V 68 h -54 V 57 a 14 14 90 0 1 14 -14" fill="#abd9e9" stroke="#abd9e9" stroke-width="0"/>
+	<path d="M 677 68.0 v 11 a 14 14 90 0 1 -14 14 H 637 a 14 14 90 0 1 -14 -14 V 68.0 H 54" fill="#e0f3f8" stroke="#e0f3f8" stroke-width="0"/>
+	<rect x="623" y="43" width="54" height="50" fill="none" rx="14" stroke="#74add1" stroke-width="2"/>
+	<line x1="623" y1="68" x2="677" y2="68" stroke="#74add1" stroke-width="1"/>
+	<text x="630" y="60.7" fill="#000000" font-family="Verdana" font-size="12">AVOIR</text>
+</g>
+
+<!-- Association DESSERVIR -->
+<line x1="302" y1="68" x2="430" y2="68" stroke="#74add1" stroke-width="2"/>
+<text x="360" y="85.0" fill="#d73027" font-family="Verdana" font-size="12">1,N</text>
+<line x1="548" y1="68" x2="430" y2="68" stroke="#74add1" stroke-width="2"/>
+<text x="478" y="85.0" fill="#d73027" font-family="Verdana" font-size="12">1,N</text>
+<g id="association-DESSERVIR">
+	<path d="M 459 43 a 14 14 90 0 1 14 14 V 68 h -86 V 57 a 14 14 90 0 1 14 -14" fill="#abd9e9" stroke="#abd9e9" stroke-width="0"/>
+	<path d="M 473 68.0 v 11 a 14 14 90 0 1 -14 14 H 401 a 14 14 90 0 1 -14 -14 V 68.0 H 86" fill="#e0f3f8" stroke="#e0f3f8" stroke-width="0"/>
+	<rect x="387" y="43" width="86" height="50" fill="none" rx="14" stroke="#74add1" stroke-width="2"/>
+	<line x1="387" y1="68" x2="473" y2="68" stroke="#74add1" stroke-width="1"/>
+	<text x="394" y="60.7" fill="#000000" font-family="Verdana" font-size="12">DESSERVIR</text>
+</g>
+
+<!-- Entity ligne_metro -->
+<g id="entity-ligne_metro">
+	<g id="frame-ligne_metro">
+		<rect x="709" y="26" width="94" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="709" y="51.0" width="94" height="59" fill="#fee090" stroke="#fee090" stroke-width="0"/>
+		<rect x="709" y="26" width="94" height="84" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="709" y1="51" x2="803" y2="51" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="719" y="43.7" fill="#000000" font-family="Verdana" font-size="12">ligne_metro</text>
+	<text x="714" y="68.8" fill="#000000" font-family="Verdana" font-size="12">id_ligne</text>
+	<line x1="714" y1="71" x2="762" y2="71" stroke="#000000" stroke-width="1"/>
+	<text x="714" y="85.8" fill="#000000" font-family="Verdana" font-size="12">numero_ligne</text>
+	<text x="714" y="102.8" fill="#000000" font-family="Verdana" font-size="12">nom_ligne</text>
+</g>
+
+<!-- Entity station -->
+<g id="entity-station">
+	<g id="frame-station">
+		<rect x="505" y="34" width="86" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="505" y="59.0" width="86" height="43" fill="#fee090" stroke="#fee090" stroke-width="0"/>
+		<rect x="505" y="34" width="86" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="505" y1="59" x2="591" y2="59" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="527" y="51.7" fill="#000000" font-family="Verdana" font-size="12">station</text>
+	<text x="510" y="76.8" fill="#000000" font-family="Verdana" font-size="12">id_station</text>
+	<line x1="510" y1="79" x2="570" y2="79" stroke="#000000" stroke-width="1"/>
+	<text x="510" y="93.8" fill="#000000" font-family="Verdana" font-size="12">nom_station</text>
+</g>
+
+<!-- Entity type_monument -->
+<g id="entity-type_monument">
+	<g id="frame-type_monument">
+		<rect x="9" y="34" width="130" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="9" y="59.0" width="130" height="43" fill="#fee090" stroke="#fee090" stroke-width="0"/>
+		<rect x="9" y="34" width="130" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="9" y1="59" x2="139" y2="59" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="24" y="51.7" fill="#000000" font-family="Verdana" font-size="12">type_monument</text>
+	<text x="14" y="76.8" fill="#000000" font-family="Verdana" font-size="12">id_type_monument</text>
+	<line x1="14" y1="79" x2="133" y2="79" style="fill:none;stroke:#000000;stroke-width:1;stroke-dasharray:4;"/>
+	<text x="14" y="93.8" fill="#000000" font-family="Verdana" font-size="12">libelle</text>
+</g>
+
+<!-- Entity monument -->
+<g id="entity-monument">
+	<g id="frame-monument">
+		<rect x="249" y="9" width="106" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="249" y="34.0" width="106" height="93" fill="#fee090" stroke="#fee090" stroke-width="0"/>
+		<rect x="249" y="9" width="106" height="118" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="249" y1="34" x2="355" y2="34" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="269" y="26.7" fill="#000000" font-family="Verdana" font-size="12">monument</text>
+	<text x="254" y="51.7" fill="#000000" font-family="Verdana" font-size="12">id_monument</text>
+	<line x1="254" y1="54" x2="339" y2="54" stroke="#000000" stroke-width="1"/>
+	<text x="254" y="68.8" fill="#000000" font-family="Verdana" font-size="12">nom</text>
+	<text x="254" y="85.8" fill="#000000" font-family="Verdana" font-size="12">arrondissement</text>
+	<text x="254" y="102.8" fill="#000000" font-family="Verdana" font-size="12">adresse</text>
+	<text x="254" y="119.8" fill="#000000" font-family="Verdana" font-size="12">site_web</text>
+</g>
+</svg>
