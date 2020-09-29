@@ -14,7 +14,7 @@ use dbgestion;
 #	prenom		varchar(30) not null,
 #	adresse		varchar(100) not null,
 #	tel			char(10) not null
-#);
+#) INNODB;
 create table client 
 (
 	id_client 	int(5) auto_increment not null,
@@ -141,4 +141,10 @@ WHERE colonne BETWEEN valeur AND valeur2;
 SELECT  count(DISTINCT ville) "nombre de ville" FROM client;
 
 #group by
-SELECT c.nom, c.prenom, count(f.facture_number) FROM client c, facture f WHERE c.id_client= f.id_client group BY c.id_client 
+SELECT c.nom, c.prenom, count(f.facture_number) FROM client c, facture f WHERE c.id_client= f.id_client group BY c.id_client;
+
+#inner JOIN
+SELECT client.nom,client.prenom, facture.numfact FROM client INNER JOIN facture ON client.id_client=facture.id_clientFacture;
+
+#LEFT JOIN 
+SELECT * FROM client LEFT JOIN facture ON client.id_client=facture.id_clientFacture WHERE numfact is null ;
