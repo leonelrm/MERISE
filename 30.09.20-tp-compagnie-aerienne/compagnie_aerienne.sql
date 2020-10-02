@@ -12,11 +12,21 @@ USE compagnieAerienne;
 --
 CREATE TABLE IF NOT EXISTS CONSTRUCTEUR
 (
-IdConstructeur INT(10)  not null,
+IdConstructeur INT(1) AUTO_INCREMENT not null,
 NomConstructeur VARCHAR(30) not null,
 PRIMARY KEY (IdConstructeur)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-ALTER TABLE CONSTRUCTEUR auto_increment=2;
+
+
+--
+-- Contenu de la table `Constructeur` 
+--
+
+INSERT INTO CONSTRUCTEUR (NomConstructeur) VALUES
+("Aerospatiale"),
+("Boeing"),
+("Cessna"),
+("Douglas");
 
 --
 -- Structure de la table `PILOTE`
@@ -24,12 +34,26 @@ ALTER TABLE CONSTRUCTEUR auto_increment=2;
 
 CREATE TABLE IF NOT EXISTS  PILOTE
 (
-IdPilote VARCHAR (10) auto_increment not null,
-NomPilote INT(10) UNIQUE not null,
-PrenomPilote int(5) UNIQUE not null,
+IdPilote INT (3) auto_increment not null,
+NomPilote VARCHAR(10) UNIQUE not null,
+PrenomPilote VARCHAR (10) UNIQUE not null,
 PRIMARY KEY (IdPilote)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-ALTER TABLE PILOTE auto_increment=2;
+
+
+--
+-- Contenu de la table `Pilote`
+--
+
+INSERT INTO `Pilote`(`idPilote`,`NomPilote`,`PrenomPilote`) VALUES(1,'GAINSBOURB','Serge');
+(2,'FERRAT','Jean');
+(3,'NOUGARO','Claude');
+(4,'SHUMMAN','Robert');
+(5,'STROGOFF','Michel');
+(6,'SORREL','Lucien');
+(7,'TAVERNIER','Bertand');
+(8,'FAYOLLE','Marc');
+(9,'LECU','Regis');
 
 --
 -- Structure de la table `AVION`
@@ -77,11 +101,16 @@ PRIMARY KEY (TypeAvion)
 
 CREATE TABLE IF NOT EXISTS AEROPORT
 (
-IdAeroport VARCHAR(3) not null,
+IdAeroport VARCHAR (3) CHECK( IdAeroport LIKE "[A-Z][A-Z][A-Z]"),
 NomAeroport VARCHAR(10) not null,
 NomVilleDesservie VARCHAR(10),
 PRIMARY KEY(IdAeroport)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `Aeroport` 
+--
+
 
 --
 -- Structure de la table `VOL`
@@ -89,7 +118,7 @@ PRIMARY KEY(IdAeroport)
 
 CREATE TABLE IF NOT EXISTS  VOL
 (
-NumVol VARCHAR (5),
+NumVol VARCHAR (5) CHECK (NumVol LIKE "IT[0-9][0-9][0-9]"),
 AeroportDept VARCHAR(3),
 Hdepart TIME,
 AeroportArr VARCHAR(3),
@@ -103,10 +132,10 @@ PRIMARY KEY (NumVol)
 
 CREATE TABLE IF NOT EXISTS AFFECTATION
 (
-NumVol VARCHAR(5) CHECK (NumVol LIKE "IT[0-9][0-9][0-9]"),
+NumVol VARCHAR(5),
 DateVol DATE,
 NumAvion int(5) not null,
-IdPilote varchar(10),
+IdPilote INT (3),
 PRIMARY KEY (NumVol)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
