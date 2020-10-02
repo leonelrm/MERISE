@@ -45,15 +45,16 @@ PRIMARY KEY (IdPilote)
 -- Contenu de la table `Pilote`
 --
 
-INSERT INTO `Pilote`(`idPilote`,`NomPilote`,`PrenomPilote`) VALUES(1,'GAINSBOURB','Serge');
-(2,'FERRAT','Jean');
-(3,'NOUGARO','Claude');
-(4,'SHUMMAN','Robert');
-(5,'STROGOFF','Michel');
-(6,'SORREL','Lucien');
-(7,'TAVERNIER','Bertand');
-(8,'FAYOLLE','Marc');
-(9,'LECU','Regis');
+INSERT INTO `Pilote`(`NomPilote`,`PrenomPilote`) VALUES
+('GAINSBOURB','Serge'),
+('FERRAT','Jean'),
+('NOUGARO','Claude'),
+('SHUMMAN','Robert'),
+('STROGOFF','Michel'),
+('SORREL','Lucien'),
+('TAVERNIER','Bertand'),
+('FAYOLLE','Marc'),
+('LECU','Regis');
 
 --
 -- Structure de la table `AVION`
@@ -71,6 +72,17 @@ ALTER TABLE AVION auto_increment=100;
 --
 -- Contenu de la table `avion`
 --
+INSERT INTO `Avion`(`TypeAvion`,`BaseAeroport`) VALUES
+('A320','NIC'),
+('B707','CDG'),
+('A302','BLA'),
+('DC10','BLA'),
+('B747','ORL'),
+('A320','GRE'),
+('ATR42','CDG'),
+('B727','LYS'),
+('B727','NAN'),
+('A340','BAS');
 
 --
 -- Structure de la table `CONSTRUCTEUR`
