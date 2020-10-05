@@ -15,7 +15,126 @@ CREATE TABLE IF NOT EXISTS CONSTRUCTEUR
 IdConstructeur INT(1) AUTO_INCREMENT not null,
 NomConstructeur VARCHAR(30) not null,
 PRIMARY KEY (IdConstructeur)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Structure de la table `PILOTE`
+--
+
+CREATE TABLE IF NOT EXISTS  PILOTE
+(
+IdPilote INT (3) auto_increment not null,
+NomPilote VARCHAR(10) UNIQUE not null,
+PrenomPilote VARCHAR (10) UNIQUE not null,
+PRIMARY KEY (IdPilote),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Structure de la table `TYPE`
+--
+CREATE TABLE IF NOT EXISTS TYPE
+(
+TypeAvion CHAR (5) CHECK ( COALESCE(SUBSTRING(TypeAvion, 1, 1),'X') BETWEEN 'A' AND 'Z'),
+Capacite INT(5) DEFAULT 100 CHECK (Capacite<= 400 AND Capacite>= 50) not null,
+IdConstructeur INT (1),
+PRIMARY KEY (TypeAvion),
+KEY IdConstruteur (IdConstructeur)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Structure de la table `AVION`
+--
+
+CREATE TABLE IF NOT EXISTS AVION
+(
+NumAvion INT(3) auto_increment NOT NULL,
+TypeAvion CHAR (5),
+BaseAeroport CHAR (3),
+PRIMARY KEY (NumAvion),
+KEY TypeAvion (TypeAvion),
+KEY BaseAeroport (BaseAeroport)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ALTER TABLE AVION auto_increment=100;
+
+--
+-- Structure de la table `AEROPORT`
+--
+
+CREATE TABLE IF NOT EXISTS AEROPORT
+(
+IdAeroport CHAR(3),
+NomAeroport VARCHAR(10) not null,
+NomVilleDesservie VARCHAR(10),
+PRIMARY KEY(IdAeroport)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+--
+-- Structure de la table `VOL`
+--
+
+CREATE TABLE IF NOT EXISTS  VOL
+(
+NumVol CHAR (5) not null,    
+AeroportDept CHAR(3),
+Hdepart TIME,
+AeroportArr CHAR(3),
+Harrive TIME, 
+PRIMARY KEY (NumVol),
+KEY AeroportDept (AeroportDept),
+KEY AeroportArr (AeroportArr)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Structure de la table `AFFECTATION`
+--
+
+CREATE TABLE IF NOT EXISTS AFFECTATION
+(
+NumVol CHAR(5),
+DateVol DATE,
+NumAvion int(5),
+IdPilote INT (3),
+PRIMARY KEY (NumVol,DateVol),
+KEY NumAvion (NumAvion),
+KEY IdPilote (IdPilote)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+--
+-- Contraintes pour les tables exportées
+--
+-- Contraintes pour la table `AFFECTATION`
+ALTER TABLE AFFECTATION
+ADD CONSTRAINT NumVol
+FOREIGN KEY (NumVol) REFERENCES VOL (NumVol),
+ADD CONSTRAINT NumAvion
+FOREIGN KEY (NumAvion) REFERENCES AVION (NumAvion),
+ADD CONSTRAINT IdPilote
+FOREIGN KEY (IdPilote) REFERENCES PILOTE (IdPilote);
+
+-- Contraintes pour la table `VOL`
+ALTER TABLE VOL 
+ADD CONSTRAINT AeroportDept
+FOREIGN KEY (AeroportDept) REFERENCES AEROPORT (IdAeroport),
+ADD CONSTRAINT AeroportArr
+FOREIGN KEY (AeroportArr) REFERENCES AEROPORT (IdAeroport);
+
+--
+-- Contraintes pour la table `TYPE`
+ALTER TABLE TYPE 
+ADD CONSTRAINT IdConstruteur 
+FOREIGN KEY (IdConstructeur) REFERENCES CONSTRUCTEUR (IdConstructeur);
+
+-- Contraintes pour la table `AVION`
+ALTER TABLE AVION 
+ADD CONSTRAINT TypeAvion
+FOREIGN KEY (TypeAvion) REFERENCES TYPE (TypeAvion);
+ADD CONSTRAINT AVION_ibfk_1
+FOREIGN KEY (BaseAeroport) REFERENCES AEROPORT (IdAeroport),
+
+
 
 
 --
@@ -29,23 +148,10 @@ INSERT INTO CONSTRUCTEUR (NomConstructeur) VALUES
 ("Douglas");
 
 --
--- Structure de la table `PILOTE`
+-- Contenu de la table `PILOTE`
 --
 
-CREATE TABLE IF NOT EXISTS  PILOTE
-(
-IdPilote INT (3) auto_increment not null,
-NomPilote VARCHAR(10) UNIQUE not null,
-PrenomPilote VARCHAR (10) UNIQUE not null,
-PRIMARY KEY (IdPilote)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
---
--- Contenu de la table `Pilote`
---
-
-INSERT INTO `Pilote`(`NomPilote`,`PrenomPilote`) VALUES
+INSERT INTO PILOTE (NomPilote,PrenomPilote) VALUES
 ('GAINSBOURB','Serge'),
 ('FERRAT','Jean'),
 ('NOUGARO','Claude'),
@@ -57,22 +163,56 @@ INSERT INTO `Pilote`(`NomPilote`,`PrenomPilote`) VALUES
 ('LECU','Regis');
 
 --
--- Structure de la table `AVION`
+-- Contenu de la table `TYPE`
+--
+INSERT INTO TYPE (TypeAvion,Capacite,IdConstructeur) VALUES
+('A320',300,1),
+('A340',350,1),
+('ATR42',50,1),
+('B707',250,2),
+('B727',300,2),
+('B747',400,2),
+('DC10',200,4);
+
+
+--
+-- Contenu de la table `Aeroport` 
+--
+INSERT INTO AEROPORT (IdAeroport,NomAeroport,NomVilleDesservie) VALUES
+('BAS','Poretta','Bastia'),
+('BLA','Blagnac','Toulouse'),
+('BRI','Brive','Brive'),
+('CDG','Roissy','Paris'),
+('GRE','Saint Geoir','Grenoble'),
+('LYS','Saint exupéry','Lyon'),
+('NAN','Saint Herblain','Nantes'),
+('NIC','Nice cote d`azur','Nice'),
+('ORL','Orly','Paris');
+
+--
+-- Contenu de la table `VOL` 
 --
 
-CREATE TABLE IF NOT EXISTS AVION
-(
-NumAvion INT (3) auto_increment NOT NULL,
-TypeAvion VARCHAR (5),
-BaseAeroport VARCHAR (3),
-PRIMARY KEY (NumAvion)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-ALTER TABLE AVION auto_increment=100;
+INSERT INTO VOL (NumVol,AeroportDept,Hdepart,AeroportArr,HArrive) VALUES
+('100','NIC','7:00','CDG','9:00'),
+('101','ORL','11:00','BLA','12:00'),
+('102','CDG','12:00','NIC','14:00'),
+('103','GRE','9:00','BLA','11:00'),
+('104','BLA','17:00','GRE','19:00'),
+('105','LYS','6:00','ORL','7:00'),
+('106','BAS','10:00','ORL','13:00'),
+('107','NIC','7:00','BRI','8:00'),
+('108','BRI','19:00','ORL','20:00'),
+('109','NIC','18:00','ORL','19:00'),
+('110','ORL','15:00','NIC','16:00'),
+('111','NIC','17:00','NAN','19:00');
+
 
 --
--- Contenu de la table `avion`
+-- Contenu de la table `AVION`
 --
-INSERT INTO `Avion`(`TypeAvion`,`BaseAeroport`) VALUES
+
+INSERT INTO AVION (TypeAvion,BaseAeroport) VALUES
 ('A320','NIC'),
 ('B707','CDG'),
 ('A302','BLA'),
@@ -85,103 +225,31 @@ INSERT INTO `Avion`(`TypeAvion`,`BaseAeroport`) VALUES
 ('A340','BAS');
 
 --
--- Structure de la table `CONSTRUCTEUR`
---
-CREATE TABLE IF NOT EXISTS CONSTRUCTEUR
-(
-IdConstructeur INT(10)  auto_increment not null,
-NomConstructeur VARCHAR(30) not null,
-PRIMARY KEY (IdConstructeur)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-ALTER TABLE CONSTRUCTEUR auto_increment=2;
-
---
--- Structure de la table `TYPE`
---
-CREATE TABLE IF NOT EXISTS TYPE
-(
-TypeAvion VARCHAR (5) CHECK ( TypeAvion LIKE "[a-z]*"),
-Capacite INT(5) DEFAULT 100 CHECK (Capacite<= 400 AND Capacite>= 50),
-IdConstructeur int(10),
-PRIMARY KEY (TypeAvion)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
---
--- Structure de la table `AEROPORT`
+-- Contenu de la table AFFECTATION
 --
 
-CREATE TABLE IF NOT EXISTS AEROPORT
-(
-IdAeroport VARCHAR (3) CHECK( IdAeroport LIKE "[A-Z][A-Z][A-Z]"),
-NomAeroport VARCHAR(10) not null,
-NomVilleDesservie VARCHAR(10),
-PRIMARY KEY(IdAeroport)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO AFFECTATION (NumVol,DateVol,NumAvion,idPilote) VALUES
+(100,'2001-04-06',100,1),
+(100,'2001-04-07',101,2),
+(101,'2001-04-06',100,2),
+(101,'2001-04-07',103,4),
+(102,'2001-04-06',101,1),
+(102,'2001-04-07',102,3),
+(103,'2001-04-06',105,3),
+(103,'2001-04-07',104,2),
+(104,'2001-04-06',105,3),
+(104,'2001-04-07',107,8),
+(105,'2001-04-06',107,7),
+(105,'2001-04-07',106,7),
+(106,'2001-04-06',109,8),
+(106,'2001-04-07',104,5),
+(107,'2001-04-06',106,9),
+(107,'2001-04-07',103,8),
+(108,'2001-04-06',106,9),
+(108,'2001-04-07',106,5),
+(109,'2001-04-06',107,7),
+(109,'2001-04-07',105,1); 
 
---
--- Contenu de la table `Aeroport` 
---
 
 
---
--- Structure de la table `VOL`
---
 
-CREATE TABLE IF NOT EXISTS  VOL
-(
-NumVol VARCHAR (5) CHECK (NumVol LIKE "IT[0-9][0-9][0-9]"),
-AeroportDept VARCHAR(3),
-Hdepart TIME,
-AeroportArr VARCHAR(3),
-Harrive TIME, 
-PRIMARY KEY (NumVol)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Structure de la table `AFFECTATION`
---
-
-CREATE TABLE IF NOT EXISTS AFFECTATION
-(
-NumVol VARCHAR(5),
-DateVol DATE,
-NumAvion int(5) not null,
-IdPilote INT (3),
-PRIMARY KEY (NumVol)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Contraintes pour les tables exportées
---
-
---
--- Contraintes pour la table `AVION`
-ALTER TABLE AVION 
-ADD CONSTRAINT BaseAeroport 
-FOREIGN KEY (BaseAeroport) REFERENCES AEROPORT (IdAeroport);
-
-ALTER TABLE AVION 
-ADD CONSTRAINT TypeAvion 
-FOREIGN KEY (TypeAvion) REFERENCES TYPE (TypeAvion);
-
--- Contraintes pour la table `TYPE`
-ALTER TABLE TYPE 
-ADD CONSTRAINT IdConstruteur 
-FOREIGN KEY (IdConstructeur) REFERENCES CONSTRUCTEUR (IdConstructeur);
-
--- Contraintes pour la table `VOL`
-ALTER TABLE VOL 
-ADD CONSTRAINT AeroportDept
-FOREIGN KEY (AeroportDept) REFERENCES AEROPORT (IdAeroport),
-ADD CONSTRAINT AeroportArr
-FOREIGN KEY (AeroportArr) REFERENCES AEROPORT (IdAeroport);
-
--- Contraintes pour la table `AFFECTATION`
-ALTER TABLE AFFECTATION
-ADD CONSTRAINT numVol
-FOREIGN KEY (NumVol) REFERENCES VOL (NumVol),
-ADD CONSTRAINT numAvion
-FOREIGN KEY (NumAvion) REFERENCES AVION (NumAvion),
-ADD CONSTRAINT IdPilote
-FOREIGN KEY (IdPilote) REFERENCES PILOTE (IdPilote);
