@@ -42,20 +42,8 @@ adresse_client VARCHAR(50),
 ville_client VARCHAR(30),
 code_postal_client INT(5),
 email_client VARCHAR(50),
-telephone_client INT(10)
+telephone_client char(10)
 ) ENGINE=InnoDB;
-
-insert into client(Nom_client,Prenom_client,date_de_naissance_client,adresse_client,ville_client,code_postal_client,email_client,telephone_client) 
-VALUES
-( doe, john, 2000/06/14, 1 rue moufetard, Paris, 75009, john@doe.com, 06548978544),
-( smith, john, 2001/06/14, 3 rue moufetard, Paris, 75009, smith@.com, 06545696124),
-( bush, john, 1998/06/14, 5 rue moufetard, Paris, 75009, bush@doe.com, 06548968524),
-( obama, john, 1999/06/14, 9 rue rivoli, Paris, 75006, obama@doe.com, 06548956124),
-( leopold, john, 1997/06/14, 12 rue moufetard, toulouse, 31200 leopold@doe.com, 06548956124),
-( suarez, john, 2002/06/14, 40 rue pantin, marseille, 13005, suarez@doe.com, 06548956124),
-( cavani, john, 2003/06/14, 1 rue paris, Paris, 75018, cavani@doe.com, 06548956698),
-( neymar, john, 2004/06/14, 1 rue lille, Paris, 75017, neymar@doe.com, 06425956124),
-( robert, john, 1995/06/14, 1 rue de lyon, Paris, 75012, robert@doe.com, 06548566124),
 
 
 DROP TABLE IF EXISTS theme ;
@@ -90,3 +78,45 @@ ALTER TABLE Rediger ADD CONSTRAINT FK_Rediger_id_auteur FOREIGN KEY (id_auteur) 
 ALTER TABLE Rediger ADD CONSTRAINT FK_Rediger_id_livres FOREIGN KEY (id_livres) REFERENCES livres (id_livres);
 ALTER TABLE commander ADD CONSTRAINT FK_commander_id_livres FOREIGN KEY (id_livres) REFERENCES livres (id_livres);
 ALTER TABLE commander ADD CONSTRAINT FK_commander_id_client FOREIGN KEY (id_client) REFERENCES client (id_client);
+
+insert into client(Nom_client,Prenom_client,date_de_naissance_client,adresse_client,ville_client,code_postal_client,email_client,telephone_client) 
+VALUES
+( 'doe', 'john', '2000-06-14', '1 rue moufetard', 'Paris', '75009', 'john@doe.com', '0548978544'),
+( 'smith', 'john', '2001-06-14', '3 rue moufetard', 'Paris', '75009', 'smith@.com', '0654569624'),
+( 'bush', 'john', '1998-06-14', '5 rue moufetard', 'Paris', '75009', 'bush@doe.com', '0654896824'),
+( 'obama', 'john', '1999-06-14', '9 rue rivoli', 'Paris', '75006', 'obama@doe.com', '0654895612'),
+( 'leopold', 'john', '1997-06-14', '12 rue moufetard', 'toulouse', '31200', 'leopold@doe.com', '0654895124'),
+( 'suarez', 'john', '2002-06-14', '40 rue pantin', 'marseille', '13005', 'suarez@doe.com', '0654895612'),
+( 'cavani', 'john', '2003-06-14', '1 rue paris', 'Paris', '75018', 'cavani@doe.com', '0654895698'),
+( 'neymar', 'john', '2004-06-14', '1 rue lille', 'Paris', '75017', 'neymar@doe.com', '0642596124'),
+( 'robert', 'john', '1995-06-14', '1 rue de lyon', 'Paris', '75012', 'robert@doe.com', '0648566124');
+
+INSERT INTO editeur (Nom_editeur)
+ VALUES
+ ('Gallimard'),
+ ('Flammarion'),
+ ('Milan'),
+ ('Baudelaire'),
+ ('Minuit'),
+ ('Hachette'),
+ ('Privat'),
+ ('Julliard'),
+ ('Allary'),
+ ('Le léopard masqué');
+
+INSERT INTO theme (genre_theme)
+ VALUES
+ ('Roman d\'amour'),
+ ('Roman d\'espionnage'),
+ ('Roman policier'),
+ ('Science-fiction'),
+ ('Fantastique'),
+ ('Biographie');
+
+ INSERT INTO auteur (nom_auteur)
+ VALUES
+ ('J.K Rowling'),
+ ('Victor Hugo'),
+ ('Marc Levy'),
+ ('Marcel Pagnol'),
+ ('Emile Zola');
