@@ -17,8 +17,8 @@ titre_livres VARCHAR(50),
 sous_titre_livres VARCHAR(100),
 annee_de_sortie_livres YEAR,
 resume_livres TEXT,
-ISBN_livres INT(13),
-Prix_livres DECIMAL,
+ISBN_livres Char(13),
+Prix_livres DECIMAL(10,2),
 image_livres BLOB,
 id_editeur int(3),
 id_theme int(3)
@@ -120,3 +120,6 @@ INSERT INTO theme (genre_theme)
  ('Marc Levy'),
  ('Marcel Pagnol'),
  ('Emile Zola');
+
+ INSERT INTO livres(titre_livres, annee_de_sortie_livres, resume_livres, ISBN_livres, Prix_livres, id_editeur, id_theme) 
+VALUES ('Blablabla', '2015', 'feruifozfnzldnzdergfigotlpeinfienfutgodzpdfr', '1234567890123', '14.99', '3', '2');
