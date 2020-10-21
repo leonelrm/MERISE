@@ -122,4 +122,11 @@ INSERT INTO theme (genre_theme)
  ('Emile Zola');
 
  INSERT INTO livres(titre_livres, annee_de_sortie_livres, resume_livres, ISBN_livres, Prix_livres, id_editeur, id_theme) 
-VALUES ('Blablabla', '2015', 'feruifozfnzldnzdergfigotlpeinfienfutgodzpdfr', '1234567890123', '14.99', '3', '2');
+VALUES ('Blablabla', '2015', 'feruifozfnzldnzdergfigotlpeinfienfutgodzpdfr', '1234567890123', '14.99', '3', '2'),
+('Bololo', '2001', 'feruifozfnzlddsgfgbnfienfutgodzpdfr', '1234567550123', '15.99', '2', '2'),
+('Popopo', '2009', 'feruifozfnzldnzdergfigotlpeinfjhgdngodzpdfr', '1234567890132', '9.99', '10', '5'),
+('Momomo', '2019', 'feruifozfnzldnzdergfghfdhjdghenfutgodzpdfr', '2134567890123', '20.80', '3', '1'),
+('Bababa', '2010', 'feruifozfnfghffigotlpeinfienfutgodzpdfr', '1243567890123', '14.99', '1', '3'),
+('Bibibi', '2015', 'feruifozfnzldnzdergdhghbgfnfienfutgodzpdfr', '1234567809123', '16.95', '6', '2'),
+('Papapa', '2013', 'feruifozfnzldnzdergfigotlpeghfhnbenfutgodzpdfr', '1234576890123', '1.99', '4', '1'),
+('Mamama', '2007', 'ferfnfnhzdergfigotlpeinfienfutgodzpdfr', '1234567891023', '5.99', '2', '6');
